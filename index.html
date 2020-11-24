@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/style.css" type="text/css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&display=swap" rel="stylesheet">
-
+    <script src="./js/main.js"></script>
     <title>oFig - La référence des figurines FF</title>
 </head>
 
@@ -46,20 +46,20 @@
                                 <td>Cloud Stife</td>
                                 <td><span id="price-cloud">59</span>€</td>
                                 <td>
-                                    <input type="number" name="" id="" class="quantity-input">
+                                    <input type="number" name="" id="quantity-cloud" class="quantity-input">
                                     <button type="button" class="table__delete-button">supprimer</button>
                                 </td>
                             </tr>
                             <tr class="table__row">
                                 <td>Tifa Lockhart</td>
                                 <td><span id="price-tifa">69</span>€</td>
-                                <td> <input type="number" class="quantity-input" name="" id="">
+                                <td> <input type="number" class="quantity-input quantity-tifa" name="" id="">
                                     <button type="button" class="table__delete-button">supprimer</button></td>
                             </tr>
                             <tr class="table__row">
                                 <td>Barret Wallace</td>
                                 <td><span id="price-barret">69</span>€</td>
-                                <td> <input type="number" class="quantity-input" name="" id="">
+                                <td> <input type="number" class="quantity-input quantity-barret" name="" id="">
                                     <button type="button" class="table__delete-button">supprimer</button></td>
                             </tr>
                         </tbody>
@@ -131,7 +131,8 @@
                         <fieldset>
                             <legend>Informations complémentaires</legend>
                             <label for="infos">interphone,bâtiment, etc.</label>
-                            <textarea class="address-form__field address-form__field--area" name="infos" id="" cols="30" rows="3"></textarea>
+                            <textarea class="address-form__field address-form__field--area" name="infos" id="" cols="30"
+                                rows="3"></textarea>
                         </fieldset>
                     </div>
                 </div>
@@ -156,6 +157,27 @@
         </p>
     </footer>
 
+
+    <script>
+        /* Get all quantity price */
+        let priceCloud = parseInt(document.getElementById("price-cloud").innerHTML);
+        let priceTifa = parseInt(document.getElementById("price-tifa").innerHTML);
+        let priceBarret = parseInt(document.getElementById("price-barret").innerHTML);
+
+        /* Set quantity number */
+
+        let fieldCloud = document.querySelector("#quantity-cloud");
+        let quantityCloud = fieldCloud.innerHTML;
+        console.log(quantityCloud)
+
+        fieldCloud.addEventListener('change', (event) => {
+            quantityCloud = fieldCloud.innerHTML;
+            console.log(quantityCloud)
+        })
+
+
+        /*     let nbrCloud = document.getElementById */
+    </script>
 
 </body>
 
