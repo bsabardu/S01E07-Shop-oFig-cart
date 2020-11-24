@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css" type="text/css">
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <title>oFig - La référence des figurines FF</title>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <h1 class="main-header__title">
+            oFig <span class="main-header__subtitle">Figurines et statuettes</span>
+        </h1>
+        <h2 class="main-header__secondary-title">
+            Votre panier contient <em><span id="nbr-product">2 </span><span id="product">produits</span></em>
+        </h2>
+    </header>
+
+    <main class="main-content">
+        <div class="soldes-tag">Soldes</div>
+        <form action="" class="delivery">
+            <section class="basket">
+                <header class="basket__header">
+                    <h3>
+                        Votre panier
+                    </h3>
+                </header>
+                <div class="basket__content">
+                    <table class="table">
+                        <thead class="table__heading">
+                            <tr>
+                                <td>Figurine</td>
+                                <td>Prix unitaire</td>
+                                <td>Quantité</td>
+                            </tr>
+                        </thead>
+                        <tbody class="table__body">
+                            <tr class="table__row">
+                                <td>Cloud Stife</td>
+                                <td><span id="price-cloud">59</span>€</td>
+                                <td>
+                                    <input type="number" name="" id="" class="quantity-input">
+                                    <button type="button" class="table__delete-button">supprimer</button>
+                                </td>
+                            </tr>
+                            <tr class="table__row">
+                                <td>Tifa Lockhart</td>
+                                <td><span id="price-tifa">69</span>€</td>
+                                <td> <input type="number" class="quantity-input" name="" id="">
+                                    <button type="button" class="table__delete-button">supprimer</button></td>
+                            </tr>
+                            <tr class="table__row">
+                                <td>Barret Wallace</td>
+                                <td><span id="price-barret">69</span>€</td>
+                                <td> <input type="number" class="quantity-input" name="" id="">
+                                    <button type="button" class="table__delete-button">supprimer</button></td>
+                            </tr>
+                        </tbody>
+                        <tfoot class="table__footer">
+                            <tr>
+                                <td colspan="2" class="total__content">Total de la commande :</td>
+                                <td class="total__number"><span class="total-nbr">197</span>€</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+            <hr>
+            <section class="delivery">
+                <header class="delivery__header">
+                    <h3>
+                        Préférence de livraison
+                    </h3>
+                </header>
+                <div class="delivery-wrapper">
+                    <div class="delivery__choice">
+                        <fieldset>
+                            <legend>Où souhaitez vous êtes livré ?</legend>
+                            <div class="form-row">
+                                <input type="radio" name="address-choice" value="my-address" id="" checked>
+                                <label for="my-address">Mon adresse courante</label>
+                            </div>
+                            <input type="radio" name="address-choice" value="other-address" id="">
+                            <label for="other-address">Autre adresse</label>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Options</legend>
+                            <div class="form-row">
+                                <input type="checkbox" name="follow-up" checked>
+                                <label for="follow-up">Suivi de livraison par sms (inclus)</label>
+                            </div>
+                            <div class="form-row">
+                                <input type="checkbox" name="refund">
+                                <label for="follow-up">Satisfait ou remboursé (+ 2 euros)</label>
+                            </div>
+                            <div class="form-row">
+                                <input type="checkbox" name="garantee">
+                                <label for="follow-up">Garantie 2 ans (+ 10 euros)</label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="address-form">
+                        <fieldset>
+                            <legend>Adresse</legend>
+                            <div class="form-row">
+                                <label for="street" class="address-form__label">Rue</label>
+                            </div>
+                            <div class="form-row">
+                                <input type="text" name="street" id="" class="address-form__field">
+                            </div>
+                            <div class="form-row">
+                                <label class="address-form__label" for="street">Code postal</label>
+                            </div>
+                            <div class="form-row">
+                                <input type="number" name="cp" id="" class="address-form__field">
+                            </div>
+                            <div class="form-row">
+                                <label class="address-form__label" for="street">Ville</label>
+                            </div>
+                            <div class="form-row">
+                                <input type="text" name="city" id="" class="address-form__field">
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Informations complémentaires</legend>
+                            <label for="infos">interphone,bâtiment, etc.</label>
+                            <textarea class="address-form__field address-form__field--area" name="infos" id="" cols="30" rows="3"></textarea>
+                        </fieldset>
+                    </div>
+                </div>
+            </section>
+            <hr>
+            <section class="total-confirmation">
+                <div class="total__content">Montant total à régler : </div>
+                <div class="total__number"><span class="total-nbr">196</span>€</div>
+            </section>
+            <hr>
+            <section class="ctas">
+                <button type="button" class="ctas-button ctas-button--secondary">Continuer vos achats</button>
+                <button class="ctas-button ctas-button--primary">Valider et payer</button>
+            </section>
+        </form>
+        <hr>
+    </main>
+
+    <footer class="main-footer">
+        <p class="main-footer_content">
+            oFig - toutes les images sont sous copyright SquareEnix
+        </p>
+    </footer>
+
+
+</body>
+
+</html>

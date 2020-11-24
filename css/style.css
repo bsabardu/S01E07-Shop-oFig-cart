@@ -1,0 +1,230 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+
+
+/* Header */
+
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.main-header__title,
+.main-header__secondary-title {
+    color: white;
+}
+
+.main-header__title {
+    background-color: #C80000;
+    font-size: 3rem;
+    padding: 1rem;
+    margin: 0;
+}
+
+.main-header__subtitle {
+    font-size: 0.3em;
+}
+
+.main-header__secondary-title,
+.main-footer {
+    font-weight: 300;
+    margin: 0;
+    padding: 0.5rem;
+    text-align: center;
+    color: white;
+    background-color: #666666;
+}
+
+
+
+em {
+    font-style: italic;
+    font-size: 1.2em;
+}
+
+
+/* Main Content */
+
+.main-content {
+    padding-top: 10rem;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Basket page */
+
+.basket__header,
+.delivery__header {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+}
+
+
+.delivery-wrapper {
+    display: flex;
+}
+
+.delivery-wrapper>* {
+    flex: 1;
+}
+
+.form.row {
+    display: block;
+}
+
+.table,
+.total-confirmation {
+    box-shadow: 1px 2px 5px #ccc;
+    border-radius: 4px;
+}
+
+/* Styles partagés */
+
+.table, .total-confirmation {
+    padding:2rem;
+}
+
+.delivery-wrapper, .basket__content, .total-confirmation {
+    margin: 3rem 1rem;
+}
+
+
+/* Table */
+
+thead {
+    padding: 1rem;
+}
+
+td {
+    padding: 0.5rem; 
+}
+
+tfoot td {
+    padding: 1.5rem 0.5rem;
+}
+
+.table {
+
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+.table__heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-bottom: 1px solid #ccc;
+}
+.table__delete-button {
+    background-color: transparent;
+    color: #C80000;
+    text-decoration: underline;
+    border:0;
+}
+
+.quantity-input {
+    width: 2rem;
+}
+
+/* Delivery */
+
+.form-row {
+    margin: 0.5rem 0;
+}
+
+
+
+legend {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #666666;
+    margin: 2rem 0;
+    display:inline-block;
+}
+
+fieldset{
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.address-form__field {
+    width: 100%;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+    background-color: #eeeeee;
+    border: 0;
+    border-bottom: 2px solid #dddddd;
+}
+
+.address-form__field--area {
+    height: 4rem;
+}
+
+/* Total Confirmation */
+
+.total-confirmation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.total__content, .total__number {
+font-weight: 700;
+font-size: 1.3rem;
+}
+
+.total__number{
+color: #C80000
+}
+
+/* HR */
+
+hr{
+    margin: 1rem 0;
+}
+
+/* CTA */
+
+.ctas {
+    display: flex;
+    justify-content: space-between;
+}
+.ctas-button {
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 1rem 2rem;
+    border: 0;
+}
+
+.ctas-button--primary {
+    background-color: #C80000;
+    color: white;
+}
+
+.ctas-button--secondary {
+    background-color: #eee;
+}
+
+
+/* Solde Tag */
+.soldes-tag {
+    position: fixed;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    background-color: #C80000;
+    left: 0;
+    margin: 10em 0;
+    color: white;
+    letter-spacing: -2px;
+    padding: 1rem 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
