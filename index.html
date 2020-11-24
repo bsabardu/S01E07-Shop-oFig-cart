@@ -195,7 +195,7 @@
 
         // Update Quantity on change Field in form
 
-        let newTotalCost =  () => {
+        let newTotalCost = () => {
             quantityCloud = parseInt(fieldCloud.value);
             quantityTifa = parseInt(fieldTifa.value);
             quantityBarret = parseInt(fieldBarret.value);
@@ -203,19 +203,28 @@
                 priceBarret)
         }
 
+        let editQuantity = () => {
+            quantityCloud = parseInt(fieldCloud.value);
+            quantityTifa = parseInt(fieldTifa.value);
+            quantityBarret = parseInt(fieldBarret.value);
+            let globalQuantity = quantityCloud + quantityTifa + quantityBarret;
+            console.log(globalQuantity)
+            totalQuantitySpan.innerHTML = globalQuantity;
+            globalQuantity > 1 ? document.querySelector("#product").innerHTML = " produits" : document
+                .querySelector("#product").innerHTML = " produit"
+        }
+
+        /* Adapt plural if quantity > 1 */
+
         document.querySelector("form").addEventListener('change', (event) => {
 
 
 
 
 
-            /* Update quantity in header */
-            let globalQuantity = quantityCloud + quantityTifa + quantityBarret
-            totalQuantitySpan.innerHTML = globalQuantity;
+            /* Update quantity & plural in header */
+            editQuantity();
 
-            /* Adapt plural if quantity > 1 */
-            globalQuantity > 1 ? document.querySelector("#product").innerHTML = " produits" : document
-                .querySelector("#product").innerHTML = " produit"
 
             /* Handle Options */
             if (document.querySelector("#refund").checked === true) {
@@ -231,24 +240,24 @@
             totalPriceFinal.innerHTML = newTotalCost();
         })
 
-        /*         Reset Quantity
-         */
-
-
+        /*         Reset Quantity */
         document.querySelector("#delete-quantity-cloud").addEventListener('click', (event) => {
             document.querySelector("#quantity-cloud").value = 0
             totalPriceTable.innerHTML = newTotalCost();
             totalPriceFinal.innerHTML = newTotalCost();
+            editQuantity();
         })
         document.querySelector("#delete-quantity-tifa").addEventListener('click', (event) => {
             document.querySelector("#quantity-tifa").value = 0
             totalPriceTable.innerHTML = newTotalCost();
             totalPriceFinal.innerHTML = newTotalCost();
+            editQuantity();
         })
         document.querySelector("#delete-quantity-barret").addEventListener('click', (event) => {
             document.querySelector("#quantity-barret").value = 0
             totalPriceTable.innerHTML = newTotalCost();
             totalPriceFinal.innerHTML = newTotalCost();
+            editQuantity();
         })
     </script>
 

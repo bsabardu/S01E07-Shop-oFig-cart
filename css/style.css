@@ -106,6 +106,10 @@ td {
     padding: 0.5rem; 
 }
 
+tbody tr:nth-child(odd) {
+    background-color: #eee;
+}
+
 tfoot td {
     padding: 1.5rem 0.5rem;
 }
