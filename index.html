@@ -19,7 +19,7 @@
             oFig <span class="main-header__subtitle">Figurines et statuettes</span>
         </h1>
         <h2 class="main-header__secondary-title">
-            Votre panier contient <em><span id="nbr-product">2 </span><span id="product">produits</span></em>
+            Votre panier contient <em><span id="nbr-product">2 </span><span id="product"> produit</span></em>
         </h2>
     </header>
 
@@ -47,26 +47,29 @@
                                 <td><span id="price-cloud">59</span>€</td>
                                 <td>
                                     <input type="number" name="" id="quantity-cloud" class="quantity-input">
-                                    <button type="button" class="table__delete-button">supprimer</button>
+                                    <button type="button" class="table__delete-button"
+                                        id="delete-quantity-cloud">supprimer</button>
                                 </td>
                             </tr>
                             <tr class="table__row">
                                 <td>Tifa Lockhart</td>
                                 <td><span id="price-tifa">69</span>€</td>
-                                <td> <input type="number" class="quantity-input quantity-tifa" name="" id="">
-                                    <button type="button" class="table__delete-button">supprimer</button></td>
+                                <td> <input type="number" class="quantity-input" name="" id="quantity-tifa">
+                                    <button type="button" class="table__delete-button"
+                                        id="delete-quantity-tifa">supprimer</button></td>
                             </tr>
                             <tr class="table__row">
                                 <td>Barret Wallace</td>
                                 <td><span id="price-barret">69</span>€</td>
-                                <td> <input type="number" class="quantity-input quantity-barret" name="" id="">
-                                    <button type="button" class="table__delete-button">supprimer</button></td>
+                                <td> <input type="number" class="quantity-input" name="" id="quantity-barret">
+                                    <button type="button" class="table__delete-button"
+                                        id="delete-quantity-barret">supprimer</button></td>
                             </tr>
                         </tbody>
                         <tfoot class="table__footer">
                             <tr>
                                 <td colspan="2" class="total__content">Total de la commande :</td>
-                                <td class="total__number"><span class="total-nbr">197</span>€</td>
+                                <td class="total__number"><span class="total-nbr-table">197</span>€</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -93,16 +96,16 @@
                         <fieldset>
                             <legend>Options</legend>
                             <div class="form-row">
-                                <input type="checkbox" name="follow-up" checked>
+                                <input id="follow-up" type="checkbox" name="follow-up" checked>
                                 <label for="follow-up">Suivi de livraison par sms (inclus)</label>
                             </div>
                             <div class="form-row">
-                                <input type="checkbox" name="refund">
-                                <label for="follow-up">Satisfait ou remboursé (+ 2 euros)</label>
+                                <input id="refund" type="checkbox" name="refund">
+                                <label for="refund">Satisfait ou remboursé (+ 2 euros)</label>
                             </div>
                             <div class="form-row">
-                                <input type="checkbox" name="garantee">
-                                <label for="follow-up">Garantie 2 ans (+ 10 euros)</label>
+                                <input id="garantee" type="checkbox" name="garantee">
+                                <label for="garantee">Garantie 2 ans (+ 10 euros)</label>
                             </div>
                         </fieldset>
                     </div>
@@ -140,7 +143,7 @@
             <hr>
             <section class="total-confirmation">
                 <div class="total__content">Montant total à régler : </div>
-                <div class="total__number"><span class="total-nbr">196</span>€</div>
+                <div class="total__number"><span class="total-nbr-final">196</span>€</div>
             </section>
             <hr>
             <section class="ctas">
@@ -164,19 +167,89 @@
         let priceTifa = parseInt(document.getElementById("price-tifa").innerHTML);
         let priceBarret = parseInt(document.getElementById("price-barret").innerHTML);
 
-        /* Set quantity number */
+        /* Init quantity to 0 */
 
         let fieldCloud = document.querySelector("#quantity-cloud");
-        let quantityCloud = fieldCloud.innerHTML;
-        console.log(quantityCloud)
+        let fieldTifa = document.querySelector("#quantity-tifa");
+        let fieldBarret = document.querySelector("#quantity-barret");
 
-        fieldCloud.addEventListener('change', (event) => {
-            quantityCloud = fieldCloud.innerHTML;
-            console.log(quantityCloud)
+        fieldCloud.value = 0
+        fieldTifa.value = 0
+        fieldBarret.value = 0
+
+        let quantityCloud = !isNaN(fieldCloud) ? parseInt(fieldCloud.value) : 0;
+        let quantityTifa = !isNaN(fieldTifa) ? parseInt(fieldTifa.value) : 0;
+        let quantityBarret = !isNaN(fieldBarret) ? parseInt(fieldBarret.value) : 0;
+
+        /* Init Quantity in header to 0 */
+        let totalQuantitySpan = document.querySelector("#nbr-product")
+        totalQuantitySpan.innerHTML = 0
+
+
+        /* Init total price to 0 */
+        let totalPriceTable = document.querySelector(".total-nbr-table")
+        let totalPriceFinal = document.querySelector(".total-nbr-final")
+        totalPriceTable.innerHTML = 0
+        totalPriceFinal.innerHTML = 0
+
+
+        // Update Quantity on change Field in form
+
+        let newTotalCost =  () => {
+            quantityCloud = parseInt(fieldCloud.value);
+            quantityTifa = parseInt(fieldTifa.value);
+            quantityBarret = parseInt(fieldBarret.value);
+            return (quantityCloud * priceCloud) + (quantityTifa * priceTifa) + (quantityBarret *
+                priceBarret)
+        }
+
+        document.querySelector("form").addEventListener('change', (event) => {
+
+
+
+
+
+            /* Update quantity in header */
+            let globalQuantity = quantityCloud + quantityTifa + quantityBarret
+            totalQuantitySpan.innerHTML = globalQuantity;
+
+            /* Adapt plural if quantity > 1 */
+            globalQuantity > 1 ? document.querySelector("#product").innerHTML = " produits" : document
+                .querySelector("#product").innerHTML = " produit"
+
+            /* Handle Options */
+            if (document.querySelector("#refund").checked === true) {
+                newTotalCost = newTotalCost + 2
+            }
+            if (document.querySelector("#garantee").checked === true) {
+                newTotalCost = newTotalCost + 10
+            }
+
+
+            /* Update Total Cost Value */
+            totalPriceTable.innerHTML = newTotalCost();
+            totalPriceFinal.innerHTML = newTotalCost();
         })
 
+        /*         Reset Quantity
+         */
 
-        /*     let nbrCloud = document.getElementById */
+
+        document.querySelector("#delete-quantity-cloud").addEventListener('click', (event) => {
+            document.querySelector("#quantity-cloud").value = 0
+            totalPriceTable.innerHTML = newTotalCost();
+            totalPriceFinal.innerHTML = newTotalCost();
+        })
+        document.querySelector("#delete-quantity-tifa").addEventListener('click', (event) => {
+            document.querySelector("#quantity-tifa").value = 0
+            totalPriceTable.innerHTML = newTotalCost();
+            totalPriceFinal.innerHTML = newTotalCost();
+        })
+        document.querySelector("#delete-quantity-barret").addEventListener('click', (event) => {
+            document.querySelector("#quantity-barret").value = 0
+            totalPriceTable.innerHTML = newTotalCost();
+            totalPriceFinal.innerHTML = newTotalCost();
+        })
     </script>
 
 </body>
